@@ -14,17 +14,20 @@ builder.Services.AddScoped<ICatalogo, CatalogoService>();
 builder.Services.AddScoped<ICliente, ClienteService>();
 builder.Services.AddScoped<IVentas, VentasServices>();
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddDbContext<VentasContext>(opciones =>
 opciones.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-/*if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-}*/
+}
 
 app.UseAuthorization();
 

@@ -1,6 +1,7 @@
 ﻿using EjemploEntity.DTOs;
 using EjemploEntity.Interfaces;
 using EjemploEntity.Models;
+using EjemploEntity.Utilitrios;
 using Microsoft.EntityFrameworkCore;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -9,6 +10,7 @@ namespace EjemploEntity.Services
     public class VentasServices : IVentas
     {
         private readonly VentasContext _context;
+        private ControlError Log = new ControlError();
 
         public VentasServices(VentasContext context)
         {
@@ -79,11 +81,14 @@ namespace EjemploEntity.Services
                 }
                 respuesta.Data = await query.ToListAsync();
                 respuesta.Mensaje = "Ok";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("GetVentas", "Prueba");
             }
             catch (Exception ee)
             {
                 respuesta.Cod = "000";
-                respuesta.Mensaje = $"Se presentó un error: {ee.Message}";
+                //respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                //Log.LogErrorMetodos("GetVentas", ee.Message);
             }
             return respuesta;
         }
@@ -138,7 +143,7 @@ namespace EjemploEntity.Services
             {
                 respuesta.Cod = "000";
                 respuesta.Data = await _context.Ventas.
-                    Where(v => v.Precio == Convert.ToDouble(100)).
+                    Where(v => v.Precio > 100).
                     GroupBy(v => v.Precio).
                     Select(g => new
                     {
