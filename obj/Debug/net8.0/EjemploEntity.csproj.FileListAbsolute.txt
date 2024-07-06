@@ -120,6 +120,7 @@ C:\Users\ginge\Documents\BootcampFullStack\ejercicios\ejercicioAquitecturaNetCor
 C:\Users\ginge\Documents\BootcampFullStack\ejercicios\ejercicioAquitecturaNetCore\EjemploEntity\EjemploEntity\obj\Debug\net8.0\EjemploEntity.csproj.CoreCompileInputs.cache
 C:\Users\ginge\Documents\BootcampFullStack\ejercicios\ejercicioAquitecturaNetCore\EjemploEntity\EjemploEntity\obj\Debug\net8.0\EjemploEntity.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\ginge\Documents\BootcampFullStack\ejercicios\ejercicioAquitecturaNetCore\EjemploEntity\EjemploEntity\obj\Debug\net8.0\EjemploEntity.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ginge\Documents\BootcampFullStack\ejercicios\ejercicioAquitecturaNetCore\EjemploEntity\EjemploEntity\obj\Debug\net8.0\EjemploEntity.sourcelink.json
 C:\Users\ginge\Documents\BootcampFullStack\ejercicios\ejercicioAquitecturaNetCore\EjemploEntity\EjemploEntity\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\ginge\Documents\BootcampFullStack\ejercicios\ejercicioAquitecturaNetCore\EjemploEntity\EjemploEntity\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\ginge\Documents\BootcampFullStack\ejercicios\ejercicioAquitecturaNetCore\EjemploEntity\EjemploEntity\obj\Debug\net8.0\staticwebassets\msbuild.EjemploEntity.Microsoft.AspNetCore.StaticWebAssets.props

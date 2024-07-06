@@ -96,7 +96,7 @@ namespace EjemploEntity.Services
                 var query = _context.Ventas.OrderByDescending(x => x.IdFactura).Select(x => x.IdFactura).FirstOrDefault();
 
                 venta.IdFactura = Convert.ToInt32(query) + 1;
-                //venta.FechaHoraReg = DateTime.Now;
+                venta.FechaHora = DateTime.Now;
 
                 _context.Ventas.Add(venta);
                 await _context.SaveChangesAsync();
@@ -108,6 +108,49 @@ namespace EjemploEntity.Services
             {
                 respuesta.Cod = "000";
                 respuesta.Mensaje = $"Se ha generado una novedad , error {ex.Message}";
+            }
+            return respuesta;
+        }
+
+        public async Task<Respuesta> PutVenta(Venta venta)
+        {
+            var respuesta = new Respuesta();
+            try
+            {
+                _context.Ventas.Add(venta);
+                await _context.SaveChangesAsync();
+
+                respuesta.Cod = "000";
+                respuesta.Mensaje = "Se insertó correctamente";
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return respuesta;
+        }
+
+        public async Task<Respuesta> GetVentaReporte()
+        {
+            var respuesta = new Respuesta();
+            try
+            {
+                respuesta.Cod = "000";
+                respuesta.Data = await _context.Ventas.
+                    Where(v => v.Precio == Convert.ToDouble(100)).
+                    GroupBy(v => v.Precio).
+                    Select(g => new
+                    {
+                        cant = g.Count(),
+                        valor = g.Key
+                    }).ToListAsync();
+                respuesta.Mensaje = "ok";
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
             return respuesta;
         }

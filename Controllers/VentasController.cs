@@ -32,7 +32,7 @@ namespace EjemploEntity.Controllers
             return respuesta;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("PostVenta")]
         public async Task<Respuesta> PostVenta(Venta venta)
         {
@@ -40,6 +40,41 @@ namespace EjemploEntity.Controllers
             try
             {
                 respuesta = await _ventas.PostVenta(venta);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return respuesta;
+        }
+
+        [HttpPut]
+        [Route("PutVenta")]
+        public async Task<Respuesta> PutVenta([FromBody] Venta venta)
+        {
+            var respuesta = new Respuesta();
+            try
+            {
+                respuesta = await _ventas.PutVenta(venta);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return respuesta;
+        }
+
+
+        [HttpGet]
+        [Route("GetVentaReporte")]
+        public async Task<Respuesta> GetVentaReporte()
+        {
+            var respuesta = new Respuesta();
+            try
+            {
+                respuesta = await _ventas.GetVentaReporte();
             }
             catch (Exception)
             {
