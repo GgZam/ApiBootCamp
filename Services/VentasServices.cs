@@ -81,14 +81,12 @@ namespace EjemploEntity.Services
                 }
                 respuesta.Data = await query.ToListAsync();
                 respuesta.Mensaje = "Ok";
-                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
-                Log.LogErrorMetodos("GetVentas", "Prueba");
             }
             catch (Exception ee)
             {
                 respuesta.Cod = "000";
-                //respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
-                //Log.LogErrorMetodos("GetVentas", ee.Message);
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("VentasServices", "GetVentas", ee.Message);
             }
             return respuesta;
         }
@@ -112,7 +110,8 @@ namespace EjemploEntity.Services
             catch (Exception ex)
             {
                 respuesta.Cod = "000";
-                respuesta.Mensaje = $"Se ha generado una novedad , error {ex.Message}";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("VentasServices", "PostVenta", ex.Message);
             }
             return respuesta;
         }
@@ -130,8 +129,9 @@ namespace EjemploEntity.Services
             }
             catch (Exception ex)
             {
-
-                throw;
+                respuesta.Cod = "000";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("VentasServices", "PutVenta", ex.Message);
             }
             return respuesta;
         }
@@ -152,10 +152,11 @@ namespace EjemploEntity.Services
                     }).ToListAsync();
                 respuesta.Mensaje = "ok";
             }
-            catch (Exception)
+            catch (Exception ee)
             {
-
-                throw;
+                respuesta.Cod = "000";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("VentasServices", "GetVentaReporte", ee.Message);
             }
             return respuesta;
         }

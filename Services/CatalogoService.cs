@@ -1,5 +1,6 @@
 ﻿using EjemploEntity.Interfaces;
 using EjemploEntity.Models;
+using EjemploEntity.Utilitrios;
 using Microsoft.EntityFrameworkCore;
 
 namespace EjemploEntity.Services
@@ -7,6 +8,7 @@ namespace EjemploEntity.Services
     public class CatalogoService : ICatalogo
     {
         private readonly VentasContext _context;
+        private ControlError Log = new ControlError();
 
         public CatalogoService(VentasContext context)
         {
@@ -24,8 +26,9 @@ namespace EjemploEntity.Services
             }
             catch (Exception ex)
             {
-                respuesta.Cod = "999";
-                respuesta.Mensaje = $"Se ha presentado una novedad en el metodo: GetCategoria, Error: {ex.Message}";
+                respuesta.Cod = "000";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("CatalogoService", "GetCategoria", ex.Message);
             }
             return respuesta;
         }
@@ -41,8 +44,9 @@ namespace EjemploEntity.Services
             }
             catch (Exception ex)
             {
-                respuesta.Cod = "999";
-                respuesta.Mensaje = $"Se ha presentado una novedad en el metodo: GetMarca, Error: {ex.Message}";
+                respuesta.Cod = "000";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("CatalogoService", "GetMarca", ex.Message);
             }
             return respuesta;
         }
@@ -58,8 +62,9 @@ namespace EjemploEntity.Services
             }
             catch (Exception ex)
             {
-                respuesta.Cod = "999";
-                respuesta.Mensaje = $"Se ha presentado una novedad en el metodo: GetMarca, Error: {ex.Message}";
+                respuesta.Cod = "000";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("CatalogoService", "GetModelo", ex.Message);
             }
             return respuesta;
         }

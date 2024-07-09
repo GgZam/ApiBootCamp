@@ -1,6 +1,7 @@
 ﻿using EjemploEntity.DTOs;
 using EjemploEntity.Interfaces;
 using EjemploEntity.Models;
+using EjemploEntity.Utilitrios;
 using Microsoft.EntityFrameworkCore;
 
 namespace EjemploEntity.Services
@@ -9,6 +10,7 @@ namespace EjemploEntity.Services
     {
 
         private readonly VentasContext _context;
+        private ControlError Log = new ControlError();
 
         public ProductoServices(VentasContext context)
         {
@@ -73,10 +75,11 @@ namespace EjemploEntity.Services
                     respuesta.Data = await _context.Productos.Where(x => x.ProductoId.Equals(productoID) && x.Precio.Equals(precio) && x.Estado.Equals("A")).ToListAsync();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                throw;
+                respuesta.Cod = "000";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("ProductoServices", "GetListaProductos", ex.Message);
             }
             return respuesta;
         }
@@ -95,7 +98,8 @@ namespace EjemploEntity.Services
             catch (Exception ex)
             {
                 respuesta.Cod = "000";
-                respuesta.Mensaje = $"Se presentó un error: {ex.Message}";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("ProductoServices", "PostEjemplo", ex.Message);
             }
             return respuesta;
         }
@@ -119,7 +123,8 @@ namespace EjemploEntity.Services
             catch (Exception ex)
             {
                 respuesta.Cod = "000";
-                respuesta.Mensaje = $"Se presentó un error: {ex.Message}";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("ProductoServices", "PostProducto", ex.Message);
             }
             return respuesta;
         }
@@ -138,7 +143,8 @@ namespace EjemploEntity.Services
             catch (Exception ex)
             {
                 respuesta.Cod = "000";
-                respuesta.Mensaje = $"Se presentó un error: {ex.Message}";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("ProductoServices", "PutProducto", ex.Message);
             }
             return respuesta;
         }

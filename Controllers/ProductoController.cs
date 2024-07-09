@@ -1,5 +1,6 @@
 ﻿using EjemploEntity.Interfaces;
 using EjemploEntity.Models;
+using EjemploEntity.Utilitrios;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EjemploEntity.Controllers
@@ -9,6 +10,7 @@ namespace EjemploEntity.Controllers
     public class ProductoController : Controller
     {
         private readonly IProducto _producto;
+        private ControlError Log = new ControlError();
 
         public ProductoController(IProducto producto)
         {
@@ -24,10 +26,9 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _producto.GetListaProductos(productoID, precio);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                Log.LogErrorMetodos("ProductoController", "GetListaProductos", ex.Message);
             }
             return respuesta;
         }
@@ -41,10 +42,9 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _producto.PostProducto(producto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                Log.LogErrorMetodos("ProductoController", "PostProducto", ex.Message);
             }
             return respuesta;
         }
@@ -58,10 +58,9 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _producto.PostEjemplo(ejemplo);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                Log.LogErrorMetodos("ProductoController", "PostEjemplo", ex.Message);
             }
             return respuesta;
         }
@@ -75,10 +74,9 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _producto.PutProducto(producto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                Log.LogErrorMetodos("ProductoController", "PutProducto", ex.Message);
             }
             return respuesta;
         }

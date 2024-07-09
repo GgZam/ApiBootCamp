@@ -1,5 +1,6 @@
 ﻿using EjemploEntity.Interfaces;
 using EjemploEntity.Models;
+using EjemploEntity.Utilitrios;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EjemploEntity.Controllers
@@ -9,6 +10,7 @@ namespace EjemploEntity.Controllers
     public class VentasController : Controller
     {
         private readonly IVentas _ventas;
+        private ControlError Log = new ControlError();
 
         public VentasController(IVentas ventas)
         {
@@ -24,10 +26,9 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _ventas.GetVentas(numFactura, precio, vendedor, clienteId);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                Log.LogErrorMetodos("VentasController", "GetVentas", ex.Message);
             }
             return respuesta;
         }
@@ -41,10 +42,9 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _ventas.PostVenta(venta);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                Log.LogErrorMetodos("VentasController", "PostVenta", ex.Message);
             }
             return respuesta;
         }
@@ -58,10 +58,9 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _ventas.PutVenta(venta);
             }
-            catch (Exception)
+            catch (Exception ee)
             {
-
-                throw;
+                Log.LogErrorMetodos("VentasController", "PutVenta", ee.Message);
             }
             return respuesta;
         }
@@ -76,10 +75,9 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _ventas.GetVentaReporte();
             }
-            catch (Exception)
+            catch (Exception ee)
             {
-
-                throw;
+                Log.LogErrorMetodos("VentasController", "GetVentaReporte", ee.Message);
             }
             return respuesta;
         }

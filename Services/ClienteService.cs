@@ -1,5 +1,6 @@
 ﻿using EjemploEntity.Interfaces;
 using EjemploEntity.Models;
+using EjemploEntity.Utilitrios;
 using Microsoft.EntityFrameworkCore;
 
 namespace EjemploEntity.Services
@@ -7,6 +8,7 @@ namespace EjemploEntity.Services
     public class ClienteService : ICliente
     {
         private readonly VentasContext _context;
+        private ControlError Log = new ControlError();
 
         public ClienteService(VentasContext context)
         {
@@ -50,10 +52,11 @@ namespace EjemploEntity.Services
                     respuesta.Mensaje = "ok";
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                respuesta.Cod = "000";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("ClienteService", "GetCliente", ex.Message);
             }
             return respuesta;
         }
@@ -77,7 +80,8 @@ namespace EjemploEntity.Services
             catch (Exception ex)
             {
                 respuesta.Cod = "000";
-                respuesta.Mensaje = $"Se presentó un error: {ex.Message}";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("ClienteService", "PostCliente", ex.Message);
             }
             return respuesta;
         }
@@ -96,7 +100,8 @@ namespace EjemploEntity.Services
             catch (Exception ee)
             {
                 respuesta.Cod = "000";
-                respuesta.Mensaje = $"Se presentó un error: {ee.Message}";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("ClienteService", "PutCliente", ee.Message);
             }
             return respuesta;
         }
