@@ -209,5 +209,21 @@ namespace EjemploEntity.Controllers
             }
             return respuesta;
         }
+
+        [HttpPost]
+        [Route("PostCiudad")]
+        public async Task<Respuesta> PostCiudad(Ciudad ciudad)
+        {
+            var respuesta = new Respuesta();
+            try
+            {
+                respuesta = await _catalogo.PostCiudad(ciudad);
+            }
+            catch (Exception ex)
+            {
+                Log.LogErrorMetodos("CatalogoController", "PostCiudad", ex.Message);
+            }
+            return respuesta;
+        }
     }
 }

@@ -135,3 +135,4 @@ C:\Users\ginge\Documents\BootcampFullStack\ejercicios\ejercicioAquitecturaNetCor
 C:\Users\ginge\Documents\BootcampFullStack\ejercicios\ejercicioAquitecturaNetCore\EjemploEntity\EjemploEntity\obj\Debug\net8.0\EjemploEntity.pdb
 C:\Users\ginge\Documents\BootcampFullStack\ejercicios\ejercicioAquitecturaNetCore\EjemploEntity\EjemploEntity\obj\Debug\net8.0\EjemploEntity.genruntimeconfig.cache
 C:\Users\ginge\Documents\BootcampFullStack\ejercicios\ejercicioAquitecturaNetCore\EjemploEntity\EjemploEntity\obj\Debug\net8.0\ref\EjemploEntity.dll
+C:\Users\ginge\Documents\BootcampFullStack\ejercicios\ejercicioAquitecturaNetCore\EjemploEntity\EjemploEntity\bin\Debug\net8.0\Newtonsoft.Json.dll

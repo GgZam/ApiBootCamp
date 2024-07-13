@@ -263,5 +263,34 @@ namespace EjemploEntity.Services
             }
             return respuesta;
         }
+
+        public async Task<Respuesta> PostCiudad(Ciudad ciudad)
+        {
+            var respuesta = new Respuesta();
+            try
+            {
+                var query = _context.Ciudads.OrderByDescending(x => x.CiudadId).Select(x => x.CiudadId).FirstOrDefault();
+
+                ciudad.CiudadId = Convert.ToInt32(query) + 1;
+
+                _context.Ciudads.Add(ciudad);
+                await _context.SaveChangesAsync();
+
+                respuesta.Cod = "000";
+                respuesta.Mensaje = "Se insertó correctamente";
+            }
+            catch (Exception ex)
+            {
+                respuesta.Cod = "000";
+                respuesta.Mensaje = $"Se presentó una novedad, comunicarse con el administrador del sistema";
+                Log.LogErrorMetodos("CatalogoService", "PostCiudad", ex.Message);
+            }
+            return respuesta;
+        }
+
+        public Task<Respuesta> GetVendedor(double codVendedor, string? estado)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

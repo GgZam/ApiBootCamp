@@ -16,6 +16,8 @@ namespace EjemploEntity.Interfaces
         Task<Respuesta> GetCaja();
         Task<Respuesta> PostCaja(Caja caja);
         Task<Respuesta> GetCiudad();
+        Task<Respuesta> PostCiudad(Ciudad ciudad);
+        Task<Respuesta> GetVendedor(double codVendedor, string? estado);
 
     }
 }
