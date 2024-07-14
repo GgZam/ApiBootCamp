@@ -2,7 +2,7 @@
 
 namespace EjemploEntity.DTOs
 {
-
+  
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     public class Ability
     {
