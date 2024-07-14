@@ -72,8 +72,7 @@ namespace EjemploEntity.Controllers
                 else if (categoria != null || categoria != "0")
                 {
                     var urlSetting = _configuration.GetSection("Key:UrlChuckNorrisApiCategory").Value;
-                    var parametro = categoria;
-                    var url = urlSetting + parametro;
+                    var url = urlSetting + categoria;
                     respuesta.Data = await chuckNorrisApi.GetChuckNorrisApiCategory(url);
                 }
             }
@@ -116,8 +115,7 @@ namespace EjemploEntity.Controllers
                 else if (texto != null || texto != "0")
                 {
                     var urlSetting = _configuration.GetSection("Key:UrlChuckNorrisApiTextoLibre").Value;
-                    var parametro = texto;
-                    var url = urlSetting + parametro;
+                    var url = urlSetting + texto;
                     respuesta.Data = await chuckNorrisApi.GetChuckNorrisApiTexto(url);
                 }
             }
